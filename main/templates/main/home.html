@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>Home Page</h1>
+    <div class="container ">
+        <div class="d-flex flex-row bd-highlight mb-3">
+            {% for kriskras in ls%}
+                <div class="p-2 bd-highlight">
+                    <h4><a href="{{kriskras.id}}">{{kriskras.tak}}</a></h4>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+{%endblock%}

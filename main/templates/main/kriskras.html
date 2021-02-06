@@ -1,0 +1,33 @@
+{% extends "main/base.html" %}
+{% block title %}View Kriskras{%endblock%}
+
+{% block content %}
+    <h1> {{kriskras.tak}} </h1>
+    <form method="post" action="#">
+        {% csrf_token %}
+        {% for vergadering in kriskras.vergadering_set.all %}
+            <div class="input-group mb-3">
+                <input type="date", value="{{vergadering.date|date:"Y-m-d"}}"  class="form-control col-2" name="d{{vergadering.id}}">
+                <input type="text", value="{{vergadering.activiteit}}" class="form-control" name="c{{vergadering.id}}">
+            </div>
+            
+            
+        {% endfor %}
+        <div class="input-group mb-3">
+            
+            <input type="date", name="newdate" class="form control col-2 bg-light">
+            <input type="vergadering", name="new" class="form-control">
+            <button type="submit", name="newVergadering", value="newVergadering", class="btn btn-primary me-md-2">voeg vergadering toe</button>
+
+
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex ">
+                
+                <button type="submit", name="wijzig", value="wijzig" class="btn btn-primary">wijzig</button>
+        </div>
+        
+
+
+    </form>
+{% endblock %}
