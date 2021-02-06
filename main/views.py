@@ -13,7 +13,14 @@ def index(response, id):
         if response.POST.get("wijzig"):
             print("wijzig")
             for vergadering in kriskras.vergadering_set.all():
-                    pass
+                    txt = response.POST.get("c" + str(vergadering.id))
+                    date = response.POST.get("d" + str(vergadering.id))
+
+                    vergadring = Vergadering.objects.get(pk=vergadering.id)
+                    vergadering.activiteit = txt
+                    vergadering.date = date
+                    vergadering.save()
+
                     
 
         elif response.POST.get("newVergadering"):
